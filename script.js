@@ -43,9 +43,9 @@ var textSecondCard = document.getElementsByClassName("card-text")[1];
 
 function textToGreen() {
 	if (textSecondCard.style.color == "")
-		textSecondCard.style.color = "green";
+	textSecondCard.style.color = "green";
 	else
-		textSecondCard.style.color = "";
+	textSecondCard.style.color = "";
 }
 
 editSecondCard.addEventListener("click", textToGreen);
@@ -75,24 +75,38 @@ let cardText = document.getElementsByClassName("card-text");
 
 let cardImg = document.getElementsByClassName("card-img-top");
 
-function onMouseOverBtn() {
-		cardText.forEach(text => {
-			if (text.style.display == "none") {
-				text.style.diplay = "inline";
-			} else {
-				text.style.display = "none";
-			};
-		});
+let cards = document.getElementsByClassName("card");
 
-		cardImg.forEach(img => {
-			if (img.style.transform == "scale(0.8)") {
-				img.style.transform = "none";
-			} else {
-				img.style.transform = "scale(0.8)"
-			};
-		});
+function onMouseOverBtn(x) {
+
+	if (cardText[x].style.display == "none"){
+		cardText[x].style.display = "block";
+	} else {
+		cardText[x].style.display = "none";
+	};
+
+	if (cardImg[x].height == "80%"){
+		cardImg[x].height = "100%";
+	} else {
+		cardImg[x].height = "80%";
+	};
 }
 
-viewBtn.forEach( view => {
-	view.addEventListener("mouseover", onMouseOverBtn);
-});
+
+for (let x = 0; x < viewBtn.length; x++){
+	viewBtn[x].addEventListener("mouseover", function() {
+
+		if (cardText[x].style.display == "none"){
+			cardText[x].style.display = "block";
+		} else {
+			cardText[x].style.display = "none";
+		};
+
+		if (cardImg[x].style.width == "80%"){
+			cardImg[x].style.width = "100%";
+		} else {
+			cardImg[x].style.width = "80%";
+			cardImg[x].style.margin = "auto";
+		};
+	});
+};
