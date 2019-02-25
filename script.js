@@ -66,3 +66,33 @@ function byeBootstrap() {
 }
 
 header.addEventListener("dblclick", byeBootstrap);
+
+//Exo 6
+
+let viewBtn = document.getElementsByClassName("btn-success");
+
+let cardText = document.getElementsByClassName("card-text");
+
+let cardImg = document.getElementsByClassName("card-img-top");
+
+function onMouseOverBtn() {
+		cardText.forEach(text => {
+			if (text.style.display == "none") {
+				text.style.diplay = "inline";
+			} else {
+				text.style.display = "none";
+			};
+		});
+
+		cardImg.forEach(img => {
+			if (img.style.transform == "scale(0.8)") {
+				img.style.transform = "none";
+			} else {
+				img.style.transform = "scale(0.8)"
+			};
+		});
+}
+
+viewBtn.forEach( view => {
+	view.addEventListener("mouseover", onMouseOverBtn);
+});
