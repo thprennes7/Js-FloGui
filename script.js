@@ -110,6 +110,8 @@ for (let x = 0; x < viewBtn.length; x++){
 	});
 };
 
+//Exo 7
+
 let cardsCol = document.getElementsByClassName("col-md-4"), forwardBtn = document.getElementsByClassName("btn-secondary");
 
 function flexCards(){
@@ -131,6 +133,8 @@ forwardBtn[0].addEventListener("click", function(e){
 	};
 })
 
+//Exo 8
+
 let backwardBtn = document.getElementsByClassName("btn-primary");
 
 backwardBtn.href = "#"
@@ -145,3 +149,57 @@ backwardBtn[0].addEventListener("click", function(e){
 		};
 	};
 })
+
+//Exo 9
+
+var navLogo = document.getElementsByClassName("navbar-brand")[0];
+var html = document.getElementsByTagName("html")[0];
+var body = document.getElementsByTagName("body")[0];
+
+navLogo.addEventListener("focus", function(e) {
+	e.preventDefault();
+	document.addEventListener("keydown", focused)
+})
+navLogo.addEventListener("blur", function(e) {
+	e.preventDefault();
+	document.removeEventListener("keydown", focused);
+})
+
+function focused(event) {
+	switch (event.key) {
+		case "a":
+		html.classList.add("row");
+		html.classList.remove("justify-content-md-center");
+		html.classList.remove("justify-content-md-end");
+		html.classList.add("justify-content-md-start");
+		body.classList.add("col");
+		body.classList.add("col-lg-4");
+		break;
+		case "y":
+		html.classList.add("row");
+		html.classList.remove("justify-content-md-start");
+		html.classList.remove("justify-content-md-end");
+		html.classList.add("justify-content-md-center");
+		body.classList.add("col");
+		body.classList.add("col-lg-4");
+		break;
+		case "p":
+		html.classList.add("row");
+		html.classList.remove("justify-content-md-center");
+		html.classList.remove("justify-content-md-start");
+		html.classList.add("justify-content-md-end");
+		body.classList.add("col");
+		body.classList.add("col-lg-4");
+		break;
+		case "b":
+		html.classList.remove("row");
+		html.classList.remove("justify-content-md-center");
+		html.classList.remove("justify-content-md-end");
+		html.classList.remove("justify-content-md-start");
+		body.classList.remove("col");
+		body.classList.remove("col-lg-4");
+		break;
+		default:
+		break;
+	}
+}
