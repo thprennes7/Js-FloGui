@@ -92,7 +92,6 @@ function onMouseOverBtn(x) {
 	};
 }
 
-
 for (let x = 0; x < viewBtn.length; x++){
 	viewBtn[x].addEventListener("mouseover", function() {
 
@@ -110,3 +109,39 @@ for (let x = 0; x < viewBtn.length; x++){
 		};
 	});
 };
+
+let cardsCol = document.getElementsByClassName("col-md-4"), forwardBtn = document.getElementsByClassName("btn-secondary");
+
+function flexCards(){
+	for(let x = 0; x < cardsCol.length; x++){
+		cardsCol[x].style.order = x;
+	}
+}
+
+flexCards();
+
+forwardBtn[0].addEventListener("click", function(e){
+	e.preventDefault();
+	for (let x = 0; x < cardsCol.length; x++){
+		if (cardsCol[x].style.order == 5){
+			cardsCol[x].style.order = 0;
+		} else {
+			cardsCol[x].style.order = parseInt(cardsCol[x].style.order) + 1;
+		};
+	};
+})
+
+let backwardBtn = document.getElementsByClassName("btn-primary");
+
+backwardBtn.href = "#"
+
+backwardBtn[0].addEventListener("click", function(e){
+	e.preventDefault();
+	for (let x = 0; x < cardsCol.length; x++){
+		if (cardsCol[x].style.order == 0){
+			cardsCol[x].style.order = 5;
+		} else {
+			cardsCol[x].style.order = parseInt(cardsCol[x].style.order) - 1;
+		};
+	};
+})
